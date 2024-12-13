@@ -405,9 +405,18 @@ export interface ApiDocDoc extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::doc.doc'>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
